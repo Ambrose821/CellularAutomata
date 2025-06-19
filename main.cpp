@@ -7,9 +7,12 @@ using namespace std;
 
 int main() {
 
+    Color GREY = {29,29,29,255 };
     cout<<"Loading Game of Life";
     const int screen_width=800;
     const int screen_height=800;
+
+    int CELL_SIZE =25;
 
     int FPS = 12;
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
@@ -17,15 +20,17 @@ int main() {
 
     SetTargetFPS(FPS); //Lower Fps to properly visualize the simulation
     while(WindowShouldClose()==false){
-        BeginDrawing();
-        ClearBackground({255,0,0,255});
+      
         //1. Event Handling
 
 
         //2. Update State
 
         //3. Draw Graphics 
-        //Draw Graphics
+
+        ClearBackground(GREY);
+        BeginDrawing();
+       
         EndDrawing();
         
     }
