@@ -8,18 +8,24 @@ using namespace std;
 int main() {
 
     cout<<"Loading Game of Life";
-    const int screen_width=1280;
+    const int screen_width=800;
     const int screen_height=800;
-
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(screen_width,screen_height,"Ambrose's Game of Life");
+    SetTargetFPS(60);
+    while(WindowShouldClose()==false){
+        BeginDrawing();
+        ClearBackground(BLACK);
 
-    while(WindowShouldClose()){
-        c
+        //1 Event Handling
+
+
+        //2 Perform Updates
+
+
+        //Draw Graphics
+        EndDrawing();
+        
     }
-
+    CloseWindow();
 }
-//  clang++ main.cpp  -std=c++17 -o main \
-//   -I$(brew --prefix raylib)/include \
-//   -L$(brew --prefix raylib)/lib \
-//   -lraylib \
-//   -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
