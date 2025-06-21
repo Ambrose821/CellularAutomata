@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include<raylib.h>
+#include "SimulationEntities/Grid.hpp"
 using namespace std;
 
 int main() {
@@ -12,15 +13,30 @@ int main() {
     const int screen_width=800;
     const int screen_height=800;
 
-    int CELL_SIZE =25;
+ 
 
+    int CELL_SIZE =25;
     int FPS = 12;
+
+
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(screen_width,screen_height,"Ambrose's Game of Life");
 
     SetTargetFPS(FPS); //Lower Fps to properly visualize the simulation
+
+
+    //init
+    Grid grid(GetScreenWidth(),GetScreenHeight(),GetScreenWidth()/75);
+    int prev_screen_width = GetScreenWidth();
+    int prev_screen_height = GetScreenHeight();
+
     while(WindowShouldClose()==false){
-      
+
+
+        //0. Detect Window Change
+        if(GetScreenHeight() != prev_screen_height || GetScreenWidth() != prev_screen_width ){
+            grid = Grid(GetScreenWidth(),GetScreenHeight(),GetScreenWidth()/75);
+        }
         //1. Event Handling
 
 
@@ -30,6 +46,7 @@ int main() {
 
         ClearBackground(GREY);
         BeginDrawing();
+        grid.Draw();
        
         EndDrawing();
         
