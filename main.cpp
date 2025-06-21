@@ -30,6 +30,8 @@ int main() {
     int prev_screen_width = GetScreenWidth();
     int prev_screen_height = GetScreenHeight();
 
+    grid.RandomInit();
+
     while(WindowShouldClose()==false){
 
 
@@ -44,7 +46,7 @@ int main() {
 
         //3. Draw Graphics 
 
-        ClearBackground(GREY);
+       // ClearBackground(GREY);
         BeginDrawing();
         grid.Draw();
        
