@@ -11,7 +11,7 @@ class Grid{
 
         void Draw();
         void RandomInit(); 
-       
+        void Update();
 
        
 

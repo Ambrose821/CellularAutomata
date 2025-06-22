@@ -4,22 +4,30 @@
 using namespace std;
 void  Grid::Draw()
 {
-    vector<vector<int>> gridPrevState = this->cells; 
-
+    
     for(int i =0; i <this->rows; i++){
         for(int j =0; j<this->columns; j++){
-            
-            int liveNeighbors = checkNeighbors(i,j,gridPrevState);
-
-            this->cells[i][j] = isAlive(liveNeighbors,cells[i][j]) ? 1 :0;
-
          
             Color color = cells[i][j] ? Color{0,255,0,255} : BLACK;
+            if(cells[i][j]==1){
             DrawRectangle(j*this->cellSize,i*this->cellSize,this->cellSize,this->cellSize,color);
+            }
         }
     }
 }
 
+
+void Grid:: Update(){
+  vector<vector<int>> gridPrevState = this->cells; 
+    for(int i =0; i < this->rows; i++){
+      for(int j =0; j< this->columns;j++){
+        int liveNeighbors = checkNeighbors(i,j,gridPrevState);
+        this->cells[i][j] = isAlive(liveNeighbors,cells[i][j]) ? 1 :0;
+
+      }
+    }
+
+}
 bool Grid::isSafePosition(int row,int col){
   return(row >= 0 && row< this->rows && col >=0 and col< this->columns);
 }
@@ -106,7 +114,7 @@ void Grid::RandomInit(){
   for(int i =0; i <this->rows; i++){
     for(int j=0; j<this->columns; j++){
       this->cells[i][j] = rand() % 2;
-      cout << this->cells[i][j];
+      
     }
   }
   
