@@ -16,7 +16,7 @@ int main() {
  
 
     int CELL_SIZE =25;
-    int FPS = 60;
+    int FPS = 12;
 
 
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
@@ -26,7 +26,7 @@ int main() {
 
 
     //init
-    Grid grid(GetScreenWidth(),GetScreenHeight(),GetScreenWidth()/75);
+    Grid grid(GetScreenWidth(),GetScreenHeight(),(GetScreenWidth()/(GetScreenWidth()/12)));
     int prev_screen_width = GetScreenWidth();
     int prev_screen_height = GetScreenHeight();
 
@@ -37,8 +37,11 @@ int main() {
 
         //0. Detect Window Change
         if(GetScreenHeight() != prev_screen_height || GetScreenWidth() != prev_screen_width ){
-            grid = Grid(GetScreenWidth(),GetScreenHeight(),25);
+            ClearBackground(GREY);
+            grid = Grid(GetScreenWidth(),GetScreenHeight(),GetScreenWidth()/65);
             grid.RandomInit();
+            prev_screen_width = GetScreenWidth();
+            prev_screen_height = GetScreenHeight();
         }
         //1. Event Handling
 

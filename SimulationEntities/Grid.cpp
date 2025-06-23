@@ -18,14 +18,15 @@ void  Grid::Draw()
 
 
 void Grid:: Update(){
-  vector<vector<int>> gridPrevState = this->cells; 
+ 
     for(int i =0; i < this->rows; i++){
       for(int j =0; j< this->columns;j++){
-        int liveNeighbors = checkNeighbors(i,j,gridPrevState);
-        this->cells[i][j] = isAlive(liveNeighbors,cells[i][j]) ? 1 :0;
+        int liveNeighbors = checkNeighbors(i,j,cells);
+        this->nextState[i][j] = isAlive(liveNeighbors,cells[i][j]) ? 1 :0;
 
       }
     }
+    cells.swap(nextState);
 
 }
 bool Grid::isSafePosition(int row,int col){
@@ -113,7 +114,7 @@ bool Grid::isAlive(int liveNeighbors,int currentState){
 void Grid::RandomInit(){
   for(int i =0; i <this->rows; i++){
     for(int j=0; j<this->columns; j++){
-      this->cells[i][j] = rand() % 2;
+      this->cells[i][j] = rand() % 2 ;
       
     }
   }
