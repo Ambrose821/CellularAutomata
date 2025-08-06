@@ -15,8 +15,8 @@ int main() {
 
  
 
-    int CELL_SIZE =25;
-    int FPS = 12;
+    const int CELL_SIZE =255;
+    const int FPS = 12;
 
 
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
@@ -26,7 +26,7 @@ int main() {
 
 
     //init
-    Grid grid(GetScreenWidth(),GetScreenHeight(),(GetScreenWidth()/(GetScreenWidth()/12)));
+    Grid grid(GetScreenWidth(),GetScreenHeight(),(GetScreenWidth()/(GetScreenWidth())*3));
     int prev_screen_width = GetScreenWidth();
     int prev_screen_height = GetScreenHeight();
 
@@ -38,7 +38,7 @@ int main() {
         //0. Detect Window Change
         if(GetScreenHeight() != prev_screen_height || GetScreenWidth() != prev_screen_width ){
             ClearBackground(GREY);
-            grid = Grid(GetScreenWidth(),GetScreenHeight(),GetScreenWidth()/65);
+            grid = Grid(GetScreenWidth(),GetScreenHeight(),(GetScreenWidth()/(GetScreenWidth())*3));
             grid.RandomInit();
             prev_screen_width = GetScreenWidth();
             prev_screen_height = GetScreenHeight();
@@ -60,3 +60,11 @@ int main() {
     }
     CloseWindow();
 }
+
+//  clang++ main.cpp SimulationEntities/*.cpp -std=c++17 -o main -I$(brew --prefix raylib)/include -L$(brew --prefix raylib)/lib -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+
+//   //clang++ -O3 -flto -std=c++17 -o gol main.cpp SimulationEntities/Grid.cpp -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+
+
+
+

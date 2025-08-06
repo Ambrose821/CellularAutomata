@@ -24,8 +24,8 @@ class Grid{
             vector<vector<int>> cells; 
             vector<vector<int>> nextState;
              //Check if a neighbor is within the bounds of grid
-            bool isSafePosition(int row, int col);
-            int checkNeighbors(int row,int col,vector<vector<int>> grivPrevState);
+            bool isSafePosition(const int& row, const int& col) const;
+            int checkNeighbors(const int& row,const int& col,const vector<vector<int>>& grivPrevState) const ;
             bool isAlive(int liveNeighbors,int currentState);
 
 };

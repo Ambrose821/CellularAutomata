@@ -16,8 +16,7 @@ void  Grid::Draw()
     }
 }
 
-
-void Grid:: Update(){
+void Grid::Update(){
  
     for(int i =0; i < this->rows; i++){
       for(int j =0; j< this->columns;j++){
@@ -29,11 +28,11 @@ void Grid:: Update(){
     cells.swap(nextState);
 
 }
-bool Grid::isSafePosition(int row,int col){
-  return(row >= 0 && row< this->rows && col >=0 and col< this->columns);
+bool Grid::isSafePosition(const int& row,const int& col) const{
+  return(row >= 0 && row < this->rows && col >=0 and col < this->columns);
 }
 
-int Grid::checkNeighbors(int row, int col,vector<vector<int>> gridPrevState){
+int Grid::checkNeighbors(const int& row, const int& col, const vector<vector<int>>& gridPrevState) const {
     int liveNeighbors =0;
     
     //Above Neighbors
